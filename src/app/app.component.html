@@ -1,0 +1,54 @@
+<div class="main">
+  <mat-toolbar class="toolbar">
+    <button
+      mat-raised-button
+      (click)="openNewPostDialog()"
+    >
+      New +
+    </button>
+  </mat-toolbar>
+  <div>
+    <h1>POSTS: {{ numberOfPosts }}</h1>
+    <table
+      mat-table
+      [dataSource]="dataSource"
+      matSort
+      matSortActive="id"
+      matSortDirection="asc"
+    >
+    <ng-container
+      *ngFor="let column of displayedColumns; let i = index"
+      [matColumnDef]="column.property"
+    >
+      <mat-header-cell
+        *matHeaderCellDef
+        mat-sort-header
+        >{{ column.label }}</mat-header-cell
+      >
+      <mat-cell *matCellDef="let row">{{ row[column.property] }}</mat-cell>
+    </ng-container>
+    <ng-container
+      matColumnDef="Remove"
+    >
+      <mat-header-cell
+      *matHeaderCellDef
+      >Remove</mat-header-cell>
+      <mat-cell *matCellDef="let row">
+        <button
+          mat-icon-button
+          colo="gray"
+          (click)="deletePost(row)"
+        >
+        <fa-icon [icon]="faTrash"></fa-icon>
+        </button>
+      </mat-cell>
+    </ng-container>
+    <mat-header-row
+      *matHeaderRowDef="columnDefs; sticky: true"
+    ></mat-header-row>
+    <mat-row
+      *matRowDef="let row; columns: columnDefs; let i = index"
+    ></mat-row>
+    </table>
+  </div>
+</div>

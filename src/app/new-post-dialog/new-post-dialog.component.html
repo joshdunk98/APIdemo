@@ -1,0 +1,55 @@
+<div>
+  <div>
+    <h2 mat-dialog-title>Add New Account</h2>
+    <mat-dialog-content class="mat-typography">
+        <form
+          id="new-account-form"
+          [formGroup]="newPostForm"
+        >
+          <div class="form-section">
+            <mat-form-field
+              id="post-title"
+              class="full-width"
+            >
+              <input
+                class="full-width"
+                formControlName="Title"
+                matInput
+                placeholder="Title"
+                required
+              />
+            </mat-form-field>
+            <mat-form-field
+              id="post-body"
+              class="full-width"
+            >
+              <input
+                class="full-width"
+                formControlName="Body"
+                matInput
+                placeholder="body"
+                required
+              />
+            </mat-form-field>
+          </div>
+        </form>
+    </mat-dialog-content>
+  </div>
+
+  <mat-dialog-actions class="mat-dialog-actions">
+    <div>
+      <button
+        mat-button
+      >
+        Cancel
+      </button>
+      <button
+        mat-flat-button
+        [disabled]="newPostForm.invalid || newPostForm.pristine || isSaving"
+        (click)="addNewPost()"
+      >
+        {{ 'Create' }}
+      </button>
+    </div>
+  </mat-dialog-actions>
+</div>
