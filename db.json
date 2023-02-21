@@ -1,7 +1,7 @@
 {
   "person1": {
-    "name": Joshua,
-    "school": MTSU,
+    "name": "Joshua",
+    "school": "MTSU",
     "work": "Antage"
   }
 }
